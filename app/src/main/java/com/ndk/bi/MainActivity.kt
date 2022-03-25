@@ -9,8 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.simpleName
 
-    external fun stringFromJNI(): String?
+    /**
+     * Native functions
+     */
+    private external fun stringFromJNI(): String?
 
+    /**
+     * Loading the native library in runtime
+     */
     init {
         System.loadLibrary("ndktest")
     }
@@ -24,7 +30,13 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun callback(value: String) {
-        Log.e(TAG, "value:$value")
+    /**
+     * Expose the method to be called from c code
+     */
+    fun obtainId(value: String): String {
+        Log.e(TAG, "Value received from native code: $value")
+        return "ID: $value"
     }
+
+
 }
