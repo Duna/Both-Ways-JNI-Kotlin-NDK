@@ -1,0 +1,5 @@
+export ANDROID_SDK=/Users/mariusduna/Library/Android/sdk
+export PATH=$PATH:$ ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
+export ANDROID_NDK=/Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888
+export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_NDK
+ndk-build
