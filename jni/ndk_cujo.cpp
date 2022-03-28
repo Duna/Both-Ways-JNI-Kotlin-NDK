@@ -2,12 +2,13 @@
 #include <stdarg.h>
 #include <android/log.h>
 #include <string>
+#include<ndk_cujo.h>
 
 #define JNI_METHOD(RETURN, METHOD_NAME) \
-    JNIEXPORT RETURN JNICALL Java_com_ndk_bi_MainActivity_##METHOD_NAME
+    JNIEXPORT RETURN JNICALL Java_com_ndk_bi_NdkExposed_##METHOD_NAME
 
 #define LOG(MESSAGE) \
-    __android_log_print(ANDROID_LOG_VERBOSE, "MainActivity", MESSAGE)
+    __android_log_print(ANDROID_LOG_VERBOSE, "NdkExposed", MESSAGE)
 
 #ifdef __cplusplus
 extern "C" {
@@ -15,9 +16,9 @@ extern "C" {
 
 JNI_METHOD(jstring, stringFromJNI)( JNIEnv* env, jobject instance) {
      LOG("Returning some string data to Kotlin");
-     return env->NewStringUTF("Some String Data from C");
+     return env->NewStringUTF("String Data from C lib");
 }
-/*jstring Java_com_ndk_bi_MainActivity_stringFromJNI(JNIEnv* env, jobject obj){
+/*jstring Java_com_ndk_bi_NdkExposed_stringFromJNI(JNIEnv* env, jobject obj){
     return (*env)->NewStringUTF(env, "Some String Data from C");
 }*/
 JNI_METHOD(jstring, concatStr)( JNIEnv* env, jobject instance, jstring str) {

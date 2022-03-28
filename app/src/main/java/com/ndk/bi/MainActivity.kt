@@ -11,46 +11,21 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.simpleName
-
-    /**
-     * Native functions
-     */
-    private external fun stringFromJNI(): String?
-    private external fun concatStr(str: String): String?
-    private external fun concatStrParam(str: String): String?
-
-    /**
-     * Loading the native library in runtime
-     */
-    init {
-        System.loadLibrary("ndktest")
-    }
+    lateinit var ndk: NdkExposed
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var han = Handler(Looper.getMainLooper())
+        ndk = NdkExposed()
         setContentView(R.layout.activity_main)
         val cButton = findViewById<Button>(R.id.button_call_c)
         cButton.setOnClickListener(View.OnClickListener {
-            cButton.text = stringFromJNI()
-            Toast.makeText(this, concatStr("Toast str: "), Toast.LENGTH_LONG).show()
+            cButton.text = ndk.stringFromJNI()
+            Toast.makeText(this, ndk.concatStr("Toast str: "), Toast.LENGTH_LONG).show()
             han.postDelayed(Runnable {
-                Toast.makeText(this, concatStrParam("Toast str: "), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, ndk.concatStrParam("Toast str: "), Toast.LENGTH_LONG).show()
             }, 3000)
         })
-    }
-
-    /**
-     * Expose the method to be called from c code
-     */
-    fun obtainId(): String {
-        Log.e(TAG, "Value received from native code")
-        return "ID - null"
-    }
-
-    fun obtainIdParam(value: String): String {
-        Log.e(TAG, "Value received from native code: $value")
-        return "ID - $value"
     }
 
 
