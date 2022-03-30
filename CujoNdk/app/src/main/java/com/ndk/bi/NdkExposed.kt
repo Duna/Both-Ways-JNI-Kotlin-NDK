@@ -30,7 +30,7 @@ class NdkExposed {
      */
     fun obtainId(): String {
         Log.e(TAG, "Value received from native code")
-        return "ID - null"
+        return "ID time " + System.currentTimeMillis()
     }
 
     fun obtainIdParam(value: String): String {
