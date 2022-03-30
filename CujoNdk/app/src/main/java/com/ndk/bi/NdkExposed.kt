@@ -30,11 +30,11 @@ class NdkExposed {
      */
     fun obtainId(): String {
         Log.e(TAG, "Value received from native code")
-        return "ID time " + System.currentTimeMillis()
+        return "\n[C->Kotlin] Call No Param, return and concat value"
     }
 
     fun obtainIdParam(value: String): String {
-        Log.e(TAG, "Value received from native code: $value")
-        return "ID - $value"
+        Log.e(TAG, "[C->Kotlin] concat: $value \n")
+        return "[Kotlin->C] return: $value"
     }
 }

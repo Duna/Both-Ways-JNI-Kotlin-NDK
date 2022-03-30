@@ -1,5 +1,4 @@
-/Users/mariusduna/projects/TwoWayJNI/CujoNdk/obj/local/x86_64/objs/ndk_speedify/ndk_speedify.o: \
-  /Users/mariusduna/projects/TwoWayJNI/CujoNdk/jni/ndk_speedify.cpp \
+./obj/local/x86_64/objs/ndk_speedify/ndk_speedify.o: jni/ndk_speedify.cpp \
   /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/string \
   /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/__config \
   /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/string_view \
@@ -46,7 +45,7 @@
   /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/cctype \
   /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/ctype.h \
   /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/wctype.h \
-  /Users/mariusduna/projects/TwoWayJNI/CujoNdk/jni/ndk_cujo.h
+  jni/ndk_cujo.h
 
 /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/string:
 
@@ -140,4 +139,4 @@
 
 /Users/mariusduna/Library/Android/sdk/ndk/24.0.8215888/sources/cxx-stl/llvm-libc++/include/wctype.h:
 
-/Users/mariusduna/projects/TwoWayJNI/CujoNdk/jni/ndk_cujo.h:
+jni/ndk_cujo.h:

@@ -16,7 +16,7 @@ extern "C" {
 
 JNI_METHOD(jstring, stringFromJNI)( JNIEnv* env, jobject instance) {
      LOG("Returning some string data to Kotlin");
-     return env->NewStringUTF("String Data from C lib");
+     return env->NewStringUTF("[C] Call");
 }
 /*jstring Java_com_ndk_bi_NdkExposed_stringFromJNI(JNIEnv* env, jobject obj){
     return (*env)->NewStringUTF(env, "Some String Data from C");
@@ -52,7 +52,7 @@ JNI_METHOD(jstring, concatStrParam)( JNIEnv* env, jobject instance, jstring str)
     }
 
     //obtain the result of function and cast to string
-    jstring paramStr = env->NewStringUTF("123e4567-e89b-12d3-a456-556642440000");
+    jstring paramStr = env->NewStringUTF("xyz");
     const jobject result = env->CallObjectMethod(instance, method, paramStr);
     const char* id = env->GetStringUTFChars((jstring) result, JNI_FALSE);
     std::string strId = id;
@@ -65,7 +65,6 @@ JNI_METHOD(jstring, concatStrParam)( JNIEnv* env, jobject instance, jstring str)
 }
 
 jstring getCujoString(JNIEnv* env, jobject instance, jstring str){
-    //return env->NewStringUTF("Java_com_ndk_bi_NdkExposed_concatStr(env, instance, str)");
     return Java_com_ndk_bi_NdkExposed_concatStr(env, instance, str);
 }
 

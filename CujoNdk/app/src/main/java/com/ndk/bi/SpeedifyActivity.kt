@@ -21,8 +21,11 @@ class SpeedifyActivity : AppCompatActivity() {
         val cButton = findViewById<Button>(R.id.button_call_c)
         cButton.setOnClickListener(View.OnClickListener {
             try {
-                val text = ndk.getSpeedifyString("ComplexID is:")
-                Toast.makeText(this, "ndk->speedify->cujo->kotlin: $text", Toast.LENGTH_LONG).show()
+                val text = ndk.getSpeedifyString(" xyz")
+                CustomAlert(
+                    this, "Making call between multiple libs", "Flow: Kotlin->speedify_lib->cujo_static_lib->Kotlin->return value" +
+                            text
+                )
             } catch (ex: Exception) {
                 Log.d(TAG, "JNI invoke method failed: $ex")
             }

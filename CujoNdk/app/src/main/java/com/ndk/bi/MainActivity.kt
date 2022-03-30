@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -18,14 +17,25 @@ class MainActivity : AppCompatActivity() {
         var han = Handler(Looper.getMainLooper())
         ndk = NdkExposed()
         setContentView(R.layout.activity_main)
-        val cButton = findViewById<Button>(R.id.button_call_c)
-        cButton.setOnClickListener(View.OnClickListener {
-            cButton.text = ndk.stringFromJNI()
-            Toast.makeText(this, ndk.concatStr("Toast str: "), Toast.LENGTH_LONG).show()
-            han.postDelayed(Runnable {
-                Toast.makeText(this, ndk.concatStrParam("Toast str: "), Toast.LENGTH_LONG).show()
-            }, 3000)
-        })
+
+        val cButton = findViewById<Button>(R.id.button_get_string_c)
+        cButton.setOnClickListener {
+            val text: String? = "[Kotlin->C] Call \n" + ndk.stringFromJNI() + "\n[C->Kotlin] Return value"
+            CustomAlert(this, "String from C", text!!)
+        }
+
+        val cButton1 = findViewById<Button>(R.id.button_call_c)
+        cButton1.setOnClickListener {
+            val text: String? = "[Kotlin->C] Call with param: xyz" + ndk.concatStr("\n[C] xyz") + "\n[C->Kotlin] Return value"
+            CustomAlert(this, "Call to Kotlin>C>Kotlin without C parameter", text!!)
+        }
+
+        val cButton2 = findViewById<Button>(R.id.button_call_c_parameter)
+        cButton2.setOnClickListener {
+            val text: String? =
+                "[Kotlin->C] Call with param: xyz" + ndk.concatStrParam("\n[C->Kotlin] with param: xyz\n") + "\n[C->Kotlin] Return value"
+            CustomAlert(this, "Call from: Kotlin>C>Kotlin with C parameter", text!!)
+        }
 
         val newActButton = findViewById<Button>(R.id.button_start_speedify)
         newActButton.setOnClickListener(View.OnClickListener {

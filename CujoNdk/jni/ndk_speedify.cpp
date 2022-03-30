@@ -15,17 +15,14 @@
 extern "C" {
 #endif
 
-/*JNI_METHOD(jstring, stringFromJNI)( JNIEnv* env, jobject instance) {
-     LOG("Returning some string data to Kotlin");
-     return env->NewStringUTF("String Data from C lib");
-}*/
-
 JNI_METHOD(jstring, getSpeedifyString)( JNIEnv* env, jobject instance, jstring str) {
     jboolean isCopy = true;
     const char *cParam = (env)->GetStringUTFChars(str, &isCopy);
     std::string sParam = cParam;
 
-   /* typedef jstring (*foo_t)(JNIEnv* env, jobject instance, jstring str);
+   /* call method as dynamic include of cujo lib inside speedify lib .mk file needs modified
+
+    typedef jstring (*foo_t)(JNIEnv* env, jobject instance, jstring str);
     foo_t foo = NULL;
 
     void *pLib = ::dlopen("libndk_cujo.so", RTLD_LAZY);
@@ -45,7 +42,6 @@ JNI_METHOD(jstring, getSpeedifyString)( JNIEnv* env, jobject instance, jstring s
     std::string strReturnParam = cReturnParam;
 
     return env->NewStringUTF(strReturnParam.append(sParam).c_str());
-    //return str;
 }
 
 #ifdef __cplusplus
