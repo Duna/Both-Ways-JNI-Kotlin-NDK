@@ -1,8 +1,9 @@
 # TwoWayJNI
 
-The project is POC of using JNI for Android NDK. It consists in 2 modules:
+The project is POC of using JNI for Android NDK. It consists in 3 modules:
 - Calling C++ function from Kotlin
 - Calling Kotlin function from C++
+- Calling Kotlin function from Kotlin, then calling C++ function from another C++ Lib then calling Kotlin function again
 
 On Mac(or any other OS) install the NDK and execute the following command lines:
 
@@ -27,3 +28,8 @@ Steps:
 Notes:
  - On step 1 the speedify.so lib is generated and includes also static reference to cujo.so lib
  - On step 2 only shared cujo lib is generated - used to show how JNI works in both directions
+
+ Also:
+ 1. From the MainActivity the direct JNI calls from and to c library are made
+ 2. From the SpeedifyActivity calls from c to another c library and back to Kotlin are made.
+ All calls can be triggered in both directions.
