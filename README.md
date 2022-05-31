@@ -31,5 +31,5 @@ Notes:
 
  Also:
  1. From the MainActivity the direct JNI calls from and to c library are made
- 2. From the SpeedifyActivity calls from c to another c library and back to Kotlin are made.
+ 2. From the SpeedActivity calls from c to another c library and back to Kotlin are made.
  All calls can be triggered in both directions.
