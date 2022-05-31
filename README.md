@@ -1,5 +1,7 @@
 # TwoWayJNI
 
+![](https://komarev.com/ghpvc/?username=Duna)
+
 The project is POC of using JNI for Android NDK. It consists in 3 modules:
 - Calling C++ function from Kotlin
 - Calling Kotlin function from C++
