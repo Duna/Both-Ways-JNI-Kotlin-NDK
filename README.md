@@ -28,8 +28,8 @@ Steps:
 5. Run the Android app
 
 Notes:
- - On step 1 the speedify.so lib is generated and includes also static reference to cujo.so lib
- - On step 2 only shared cujo lib is generated - used to show how JNI works in both directions
+ - On step 1 the lib.so lib is generated and includes also static reference to cujo.so lib
+ - On step 2 only shared lib is generated - used to show how JNI works in both directions
 
  Also:
  1. From the MainActivity the direct JNI calls from and to c library are made
