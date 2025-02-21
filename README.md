@@ -28,7 +28,7 @@ Steps:
 5. Run the Android app
 
 Notes:
- - On step 1 the lib.so lib is generated and includes also static reference to cujo.so lib
+ - On step 1 the lib.so lib is generated and includes also static reference to *.so lib
  - On step 2 only shared lib is generated - used to show how JNI works in both directions
 
  Also:
